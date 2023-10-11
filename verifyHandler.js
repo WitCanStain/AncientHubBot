@@ -47,6 +47,7 @@ const processVerificationSubmission = (message) => {
             let username = message.author.username;
             let userid = message.author.id;
             let embed = buildVerificationRequestEmbedMsg(verify_img_url, username, userid, verification_code)
+            message.author.send('Thank you for submitting your verification details. Please wait for the Ancient Hub team to review your request.')
             ds_client.channels.cache.get(process.env.VERIFICATION_CHANNEL_ID).send({ embeds: [embed] })
         }
       })
