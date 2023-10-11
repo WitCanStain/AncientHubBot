@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 dotenv.config();
 const {ds_client} = require("./ds");
-const {sendVerificationMessageToUser, processVerificationSubmission, acceptUserVerification } = require("./verifyHandler");
+const {sendVerificationMessageToUser, processVerificationSubmission, acceptUserVerification, rejectUserVerification } = require("./verifyHandler");
 const {messageIsInApprovedChannels} = require("./ds_util");
 
 const PREFIX = '!';

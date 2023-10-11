@@ -97,7 +97,7 @@ const rejectUserVerification = async (message, reject_reason) => {
         });
         userid = userid ?? Number(userid_field?.value);
     });
-    let reject_msg = reject_reason ? 'Your verification request was rejected. Please read the instructions carefully and try again.' : `Your verification request was rejected. The following reason was provided: ${reject_reason}`;
+    let reject_msg = !reject_reason ? 'Your verification request was rejected. Please read the instructions carefully and try again.' : `Your verification request was rejected. The following reason was provided: ${reject_reason}`;
     if (userid) {
         ds_client.users.cache.get(userid).send(reject_msg);
         message.reply(`The user has been informed.`);
