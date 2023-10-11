@@ -37,7 +37,7 @@ const buildVerificationCmdEmbedMsg = (verification_code) => {
 	// .setThumbnail('https://i.imgur.com/AfFp7pu.png')
 	.addFields(
         { name: 'Verification Instructions', value: verify_initiate_msg_template },
-		{ name: process.env.VERIFICATION_CODE_FIELD_NAME, value: verification_code.toString() }
+		{ name: 'Verification Code', value: verification_code.toString() }
 	)
 	.setTimestamp()
 	.setFooter({ text: 'If you have any further questions or queries please contact a member of the the Ancient Hub admin team.', iconURL: 'https://i.imgur.com/bWEsAnV.png' });

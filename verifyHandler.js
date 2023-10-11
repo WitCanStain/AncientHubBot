@@ -37,7 +37,7 @@ const processVerificationSubmission = (message) => {
             msg.embeds.forEach((embed) => {
                 let fields = embed.fields;
                 let verification_code_field = fields.find((field) => {
-                    return field.name === process.env.VERIFICATION_CODE_FIELD_NAME;
+                    return field.name === 'Verification Code';
                 });
                 verification_code = verification_code ?? verification_code_field?.value;
             });
