@@ -62,5 +62,3 @@ const credits = function(message) {
 }
 
 // Login to Discord with your client's token
-
-

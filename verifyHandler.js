@@ -71,14 +71,16 @@ const acceptUserVerification = async (message) => {
         const guild = ds_client.guilds.cache.get(process.env.GUILD_ID);
         let member = guild.members.cache.get(userid);
         let role_to_add = member.guild.roles.cache.find(role => role.name.toLowerCase() === "ancient");
+        let role_to_rmv = member.guild.roles.cache.find(role => role.name.toLowerCase() === "unvetted");
         await member.roles.add(role_to_add);
+        await member.roles.remove(role_to_rmv);
         console.log(`member: ${JSON.stringify(member)}`);
         member.send('Your verification request was accepted. Welcome, Ancient.');
         // ds_client.users.cache.get(userid).send('Your verification request was accepted. Welcome, Ancient.');
         message.reply(`The user has been informed.`);
         ds_client.channels.cache.get(process.env.VERIFICATION_LOG_CHANNEL_ID).send(`<@${message.author.id}> has approved the verification request of user ${username} (${userid})`, {"allowedMentions": { "users" : []}});
     };
-    
+
 }
 
 const rejectUserVerification = async (message, reject_reason) => {
