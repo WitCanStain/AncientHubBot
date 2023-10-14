@@ -79,6 +79,7 @@ const acceptUserVerification = async (message) => {
         // ds_client.users.cache.get(userid).send('Your verification request was accepted. Welcome, Ancient.');
         message.reply(`The user has been informed.`);
         ds_client.channels.cache.get(process.env.VERIFICATION_LOG_CHANNEL_ID).send(`<@${message.author.id}> has approved the verification request of user ${username} (${userid})`, {"allowedMentions": { "users" : []}});
+        repliedTo.delete();
     };
 
 }
@@ -105,6 +106,7 @@ const rejectUserVerification = async (message, reject_reason) => {
         ds_client.users.cache.get(userid).send(reject_msg);
         message.reply(`The user has been informed.`);
         ds_client.channels.cache.get(process.env.VERIFICATION_LOG_CHANNEL_ID).send(`<@${message.author.id}> has rejected the verification request of user ${username} (${userid})`, {"allowedMentions": { "users" : []}})
+        repliedTo.delete();
     };
     
 }
