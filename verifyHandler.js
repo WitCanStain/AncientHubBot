@@ -71,7 +71,11 @@ const acceptUserVerification = async (message) => {
         const guild = ds_client.guilds.cache.get(process.env.GUILD_ID);
         let member = guild.members.cache.get(userid);
         let role_to_add = member.guild.roles.cache.find(role => role.name.toLowerCase() === "ancient");
+        let ancient_unverified_role_to_remove = member.guild.roles.cache.find(role => role.name.toLowerCase() === "ancient (unverified)");
+        let unvetted_role_to_remove = member.guild.roles.cache.find(role => role.name.toLowerCase() === "unvetted");
         await member.roles.add(role_to_add);
+        await member.roles.remove(ancient_unverified_role_to_remove);
+        await member.roles.remove(unvetted_role_to_remove);
         console.log(`member: ${JSON.stringify(member)}`);
         member.send('Your verification request was accepted. Welcome, Ancient.');
         // ds_client.users.cache.get(userid).send('Your verification request was accepted. Welcome, Ancient.');
