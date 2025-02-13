@@ -12,3 +12,4 @@ const userIsVerified = (message) => {
 
 exports.messageIsInApprovedChannels = messageIsInApprovedChannels;
 exports.userIsVerified = userIsVerified;
+

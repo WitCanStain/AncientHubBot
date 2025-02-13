@@ -73,16 +73,23 @@ const acceptUserVerification = async (message) => {
         let role_to_add = member.guild.roles.cache.find(role => role.name.toLowerCase() === "ancient");
         let ancient_unverified_role_to_remove = member.guild.roles.cache.find(role => role.name.toLowerCase() === "ancient (unverified)");
         let unvetted_role_to_remove = member.guild.roles.cache.find(role => role.name.toLowerCase() === "unvetted");
+        let pagan_role_to_remove = member.guild.roles.cache.find(role => role.name.toLowerCase() === "pagan");
+        let remnant_role_to_remove = member.guild.roles.cache.find(role => role.name.toLowerCase() === "remnant");
+        let neutral_role_to_remove = member.guild.roles.cache.find(role => role.name.toLowerCase() === "neutral");
         await member.roles.add(role_to_add);
         await member.roles.remove(ancient_unverified_role_to_remove);
         await member.roles.remove(unvetted_role_to_remove);
+        await member.roles.remove(remnant_role_to_remove);
+        await member.roles.remove(pagan_role_to_remove);
+        await member.roles.remove(neutral_role_to_remove);
         console.log(`member: ${JSON.stringify(member)}`);
         member.send('Your verification request was accepted. Welcome, Ancient.');
         // ds_client.users.cache.get(userid).send('Your verification request was accepted. Welcome, Ancient.');
         message.reply(`The user has been informed.`);
         ds_client.channels.cache.get(process.env.VERIFICATION_LOG_CHANNEL_ID).send(`<@${message.author.id}> has approved the verification request of user ${username} (${userid})`, {"allowedMentions": { "users" : []}});
+        repliedTo.delete();
     };
-    
+
 }
 
 const rejectUserVerification = async (message, reject_reason) => {
@@ -107,6 +114,7 @@ const rejectUserVerification = async (message, reject_reason) => {
         ds_client.users.cache.get(userid).send(reject_msg);
         message.reply(`The user has been informed.`);
         ds_client.channels.cache.get(process.env.VERIFICATION_LOG_CHANNEL_ID).send(`<@${message.author.id}> has rejected the verification request of user ${username} (${userid})`, {"allowedMentions": { "users" : []}})
+        repliedTo.delete();
     };
     
 }
