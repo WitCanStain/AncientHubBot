@@ -75,13 +75,11 @@ const acceptUserVerification = async (message) => {
             let ancient_role = message.guild.roles.cache.find(role => role.name.toLowerCase() === "ancient");
             console.log(`ancient_role: ${JSON.stringify(ancient_role)}`);
             let ancient_unverified_role_to_remove = message.guild.roles.cache.find(role => role.name.toLowerCase() === "ancient (unverified)");
-            let unvetted_role_to_remove = message.guild.roles.cache.find(role => role.name.toLowerCase() === "unvetted");
             let pagan_role_to_remove = message.guild.roles.cache.find(role => role.name.toLowerCase() === "pagan");
             let remnant_role_to_remove = message.guild.roles.cache.find(role => role.name.toLowerCase() === "remnant");
             let neutral_role_to_remove = message.guild.roles.cache.find(role => role.name.toLowerCase() === "neutral");
             await member.roles.add(ancient_role);
             await member.roles.remove(ancient_unverified_role_to_remove);
-            await member.roles.remove(unvetted_role_to_remove);
             await member.roles.remove(remnant_role_to_remove);
             await member.roles.remove(pagan_role_to_remove);
             await member.roles.remove(neutral_role_to_remove);
