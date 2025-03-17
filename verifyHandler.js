@@ -69,8 +69,8 @@ const acceptUserVerification = async (message) => {
         console.log(`username: ${username}`)
         if (userid) {
             // const guild = ds_client.guilds.cache.get(process.env.GUILD_ID);
-            // let member = message.guild.members.cache.get(userid);//guild.members.cache.get(userid);
-            let member = await ds_client.members.fetch(String(userid));
+            let member = message.guild.members.cache.get(String(userid));//guild.members.cache.get(userid);
+            // let member = await ds_client.members.fetch(String(userid));
             console.log(`member: ${JSON.stringify(member)}`)
             let ancient_role = message.guild.roles.cache.find(role => role.name.toLowerCase() === "ancient");
             console.log(`ancient_role: ${JSON.stringify(ancient_role)}`);
