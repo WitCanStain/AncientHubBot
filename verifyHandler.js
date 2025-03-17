@@ -71,19 +71,19 @@ const acceptUserVerification = async (message) => {
             // const guild = ds_client.guilds.cache.get(process.env.GUILD_ID);
             // let member = message.guild.members.cache.get(userid);//guild.members.cache.get(userid);
             let member = await ds_client.users.fetch(String(userid));
-            let role_to_add = message.guild.roles.cache.find(role => role.name.toLowerCase() === "ancient");
+            console.log(`member: ${JSON.stringify(member)}`)
+            let ancient_role = message.guild.roles.cache.find(role => role.name.toLowerCase() === "ancient");
             let ancient_unverified_role_to_remove = message.guild.roles.cache.find(role => role.name.toLowerCase() === "ancient (unverified)");
             let unvetted_role_to_remove = message.guild.roles.cache.find(role => role.name.toLowerCase() === "unvetted");
             let pagan_role_to_remove = message.guild.roles.cache.find(role => role.name.toLowerCase() === "pagan");
             let remnant_role_to_remove = message.guild.roles.cache.find(role => role.name.toLowerCase() === "remnant");
             let neutral_role_to_remove = message.guild.roles.cache.find(role => role.name.toLowerCase() === "neutral");
-            await member.roles.add(role_to_add);
+            await member.roles.add(ancient_role);
             await member.roles.remove(ancient_unverified_role_to_remove);
             await member.roles.remove(unvetted_role_to_remove);
             await member.roles.remove(remnant_role_to_remove);
             await member.roles.remove(pagan_role_to_remove);
             await member.roles.remove(neutral_role_to_remove);
-            console.log(`member: ${JSON.stringify(member)}`);
             member.send('Your verification request was accepted. Welcome, Ancient.');
             // ds_client.users.cache.get(userid).send('Your verification request was accepted. Welcome, Ancient.');
             message.reply(`The user has been informed.`);
