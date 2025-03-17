@@ -70,7 +70,7 @@ const acceptUserVerification = async (message) => {
         if (userid) {
             // const guild = ds_client.guilds.cache.get(process.env.GUILD_ID);
             // let member = message.guild.members.cache.get(userid);//guild.members.cache.get(userid);
-            let member = await ds_client.users.fetch(userid);
+            let member = await ds_client.users.fetch(String(userid));
             let role_to_add = member.guild.roles.cache.find(role => role.name.toLowerCase() === "ancient");
             let ancient_unverified_role_to_remove = member.guild.roles.cache.find(role => role.name.toLowerCase() === "ancient (unverified)");
             let unvetted_role_to_remove = member.guild.roles.cache.find(role => role.name.toLowerCase() === "unvetted");
