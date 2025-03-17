@@ -9,7 +9,7 @@ ds_client.login(process.env.BOT_TOKEN);
 
 // When the ds_client is ready, run this code (only once)
 ds_client.once('ready', () => {
-    console.log('Ready!');
+    console.log('AncientHubBot Ready!');
 });
 
 // let member = ds_client.members.cache.get(582843080227422208);//guild.members.cache.get(userid);
